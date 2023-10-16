@@ -1,0 +1,16 @@
+{
+  "name": "serverless-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "npx serverless asyncapi generate -o asyncapi.json -f json -a 2.6.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.33.0"
+  }
+}
