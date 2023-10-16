@@ -1,0 +1,49 @@
+service: serverless-asyncapi-doc-demo
+frameworkVersion: ">=3.0.0 < 4.0.0"
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+plugins:
+  - ../../../index.js
+
+custom:
+  asyncDocumentation:
+    description: This is a description of an AsyncAPI file
+    version: 1.0.0
+    servers:
+      - uatHTTP:
+          host:
+          protocol: http
+          pathname: /contact
+          description: The Contact endpoint
+          bindings:
+            - http
+    channels:
+      - httpChannel:
+          address:
+          title:
+          summary:
+          description:
+          servers:
+            - uatHTTP
+          bindings:
+            - http
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          path: /
+          method: post
+          asyncDocumentation:
+            receive:
+              - title: Create User
+                summary: Create a User
+                description: Create a new user on the application
+                channel: httpChannel
+            send:
+              - title: Create Account
+                summary: Create a user account
+                description: Create a user account on the application
